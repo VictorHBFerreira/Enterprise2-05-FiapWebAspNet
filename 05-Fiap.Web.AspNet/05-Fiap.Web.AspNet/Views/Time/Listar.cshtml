@@ -1,0 +1,39 @@
+﻿@model IList<Time>
+
+@{
+    ViewData["Title"] = "Listar";
+}
+
+<h1>Times</h1>
+
+<form asp-action="buscar" method="get">
+    <select name="esporte" class="form-control" asp-items="@Html.GetEnumSelectList<Esporte>()">
+           <option>Selecione</option>
+    </select>
+    <input type="submit" value="Buscar" class="btn btn-success ml-2" />
+</form>
+
+
+
+<table class="table">
+    <tr>
+        <th>Nome</th>
+        <th>Esporte</th>
+        <th>Mascote</th>
+        <th>Tecnico</th>
+        <th>Salario</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>@item.Nome</td>
+    <td>@item.Esporte</td>
+    <td>@(item.Mascote ? "Sim" : "Não")</td>
+
+    <td>@item.Tecnico.Nome</td>
+    <td>@item.Tecnico.Salario</td>
+
+</tr>
+    }
+</table>
+

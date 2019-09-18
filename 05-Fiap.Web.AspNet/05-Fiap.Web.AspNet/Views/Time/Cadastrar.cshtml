@@ -1,0 +1,40 @@
+﻿@model  Time
+
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h1>Cadastro de Times</h1>
+
+<form asp-action="cadastrar">
+    <fieldset>
+        <legend>Time</legend>
+        <div class="form-group">
+            <label asp-for="Nome"></label>
+            <input asp-for="Nome" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Esporte"></label>
+            <select asp-for="Esporte" asp-items="@Html.GetEnumSelectList<Esporte>()" class="form-control">
+                <option>Selecione</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <input asp-for="Mascote" />
+            <label asp-for="Mascote"></label>
+        </div>
+    </fieldset>
+    <fieldset>
+        <legend>Treinador</legend>
+        <div class="form-group">
+            <input asp-for="Tecnico.Nome" class="form-control" />
+            <label asp-for="Tecnico.Nome"></label>
+        </div>
+        <div class="form-group">
+            <input asp-for="Tecnico.Salario" class="form-control" />
+            <label asp-for="Tecnico.Salario"></label>
+        </div>
+    </fieldset>
+    <input type="submit" value="Cadastrar" class="btn btn-primary" />
+</form>
+
